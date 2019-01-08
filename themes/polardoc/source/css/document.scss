@@ -1,0 +1,48 @@
+body {
+  height: 100%;
+  overflow: hidden;
+}
+.document-content {
+  height: 100%;
+  overflow: scroll;
+}
+.category-list-wrapper {
+  height: 100%;
+  overflow: scroll;
+  padding: 20px 50px;
+  list-style: none;
+  line-height: 35px;
+  &>li:last-child {
+    margin-bottom: 120px;
+  }
+  li{
+    a.active {
+      color: $base-color;
+    }
+    a {
+      font-weight: bold;
+      font-size: 18px;
+      color: rgba(7, 24, 31, 0.87);
+    }
+    ul li a {
+      font-size: 15px;
+      color: rgba(3, 17, 31, 0.54);
+    }
+  }
+  ul {
+    padding-left: 20px;
+  }
+  * {
+    list-style: none;
+  }
+}
+
+.text-content {
+  padding: 20px;
+  color: rgba(7, 24, 31, 0.87);
+  width: 800px;
+  max-width: 100%;
+  margin: auto;
+  margin-top: 0;
+  padding-bottom: 100px;
+}

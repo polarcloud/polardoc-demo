@@ -1,0 +1,63 @@
+
+<%- css("css/blog.css") %>
+
+<div class="blog-list-wrap" uk-grid>
+    <div class="blog-list uk-margin-bottom">
+<% page.posts.forEach(function (item) {
+    %>
+
+        <article class="uk-article uk-margin-top">
+
+            <h3 class="uk-margin-remove"><a class="article-title" href=""><%= item.title %></a></h3>
+
+            <p class="uk-margin-small"><%- item.description %></p>
+
+            <div class="uk-grid-small uk-grid" uk-grid="">
+                <% if (item.tags && item.tags.length) {%>
+                <div class="uk-first-column">
+                    <% item.tags.forEach(function (tag) {
+                    %>
+                    <span class="uk-label"><%= tag.name %></span>
+                    <%
+                    })%>
+
+                </div>
+                <%}%>
+                <% if (item.author) {%>
+                <div>
+                    <a class="uk-button uk-button-text" target="_blank" href="https://github.com/<%= item.author %>"><%= item.author %></a>
+                </div>
+                <%}%>
+                <div>
+                    <span class="button-span">发布于 <%= item.date.format(config.date_format) %></span>
+                </div>
+            </div>
+
+        </article>
+
+<%
+}) %>
+        <% let pageInfo = getPostPagination(page) %>
+        <ul class="uk-pagination uk-flex-center" uk-margin>
+            <% if (pageInfo.previous) {%>
+                <li><a href="<%= pageInfo.page_url + pageInfo.previous %>"><span uk-pagination-previous></span></a></li>
+            <%}%>
+
+            <% pageInfo.pages.forEach(function (page) { %>
+               <% if (page == pageInfo.current) {%>
+                    <li class="uk-active"><span><%= page %></span></li>
+               <%}else {%>
+                    <%if (page == 1) { %>
+                        <li><a href="<%= pageInfo.first_page %>"><%= page %></a></li>
+                    <%} else {%>
+                        <li><a href="<%= pageInfo.page_url + page %>"><%= page %></a></li>
+                    <%}%>
+            <%}%>
+            <% })%>
+            <% if (pageInfo.next) {%>
+                <li><a href="<%= pageInfo.page_url + pageInfo.next %>"><span uk-pagination-next></span></a></li>
+            <%}%>
+        </ul>
+
+    </div>
+</div>

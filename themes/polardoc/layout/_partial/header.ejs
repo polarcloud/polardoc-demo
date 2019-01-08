@@ -1,0 +1,154 @@
+<div id="top-menu-wrapper" uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky">
+    <nav class="uk-navbar-container uk-navbar-transparent top-menu">
+    <div class="uk-container">
+        <div uk-navbar="" class="lfuture-navbar uk-navbar">
+            <div class="uk-navbar-left">
+                <a class="uk-navbar-item uk-logo" href="/"><%- config.name %></a>
+            </div>
+            <div class="uk-navbar-center">
+                <ul class="uk-navbar-nav uk-visible@m">
+                    <% site.data.menu.forEach(function (item) { %>
+                        <% if (item.href) {%>
+                            <li class="uk-active"><a href="<%= item.href %>"><%= item.text %></a>
+                        <% } else {%>
+                            <li class="uk-active"><a><%= item.text %></a>
+                        <%}%>
+
+                        <%if (item.children && item.children.length) { %>
+                            <div class="uk-navbar-dropdown">
+                                <ul class="uk-nav uk-navbar-dropdown-nav">
+                            <% item.children.forEach(function (item) { %>
+                                <% if (item.href) {%>
+                                    <li class="uk-active"><a href="<%= item.href %>"><%= item.text %></a></li>
+                                <% } else {%>
+                                    <li class="uk-active"><a><%= item.text %></a></li>
+                                <%}%>
+                            <%});%>
+                                </ul>
+                            </div>
+                        <%}%>
+                    </li>
+                    <% });%>
+                </ul>
+            </div>
+            <div class="uk-navbar-right"><a class="uk-navbar-toggle uk-hidden@m uk-navbar-toggle-icon uk-icon"
+                                            uk-toggle="target:#offcanvas-push" uk-navbar-toggle-icon="">
+                    <svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <rect y="9" width="20" height="2"></rect>
+                        <rect y="3" width="20" height="2"></rect>
+                        <rect y="15" width="20" height="2"></rect>
+                    </svg>
+                </a>
+                <div id="offcanvas-push" uk-offcanvas="mode: push;overlay: true" class="uk-offcanvas">
+                    <div class="uk-offcanvas-bar uk-flex uk-flex-column uk-text-center">
+                        <div class="uk-panel">
+                            <ul class="uk-nav uk-nav-default tm-nav">
+                                <li class="uk-nav-header">General</li>
+                                <li><a href="./index">Home</a></li>
+                                <li><a href="./pro">Pro</a></li>
+                                <li><a href="./changelog">Changelog</a></li>
+                                <li><a href="./download">Download</a></li>
+                            </ul>
+                            <ul class="uk-nav uk-nav-default tm-nav uk-margin-top">
+                                <li class="uk-nav-header">Getting started</li>
+                                <li exact=""><a href="./docs/introduction">Introduction</a></li>
+                                <li exact=""><a href="./docs/installation">Installation</a></li>
+                                <li exact=""><a href="./docs/less">Less</a></li>
+                                <li exact=""><a href="./docs/sass">Sass</a></li>
+                                <li exact=""><a href="./docs/javascript">JavaScript</a></li>
+                                <li exact=""><a href="./docs/webpack">Webpack</a></li>
+                                <li exact=""><a href="./docs/custom-icons">Custom icons</a></li>
+                                <li exact=""><a href="./docs/avoiding-conflicts">Avoiding conflicts</a></li>
+                                <li exact=""><a href="./docs/rtl">RTL support</a></li>
+                                <li exact=""><a href="./docs/migration">Migration</a></li>
+                            </ul>
+                            <ul class="uk-nav uk-nav-default tm-nav uk-margin-top">
+                                <li class="uk-nav-header">Components</li>
+                                <li exact=""><a href="./docs/accordion">Accordion</a></li>
+                                <li exact=""><a href="./docs/alert">Alert</a></li>
+                                <li exact=""><a href="./docs/align">Align</a></li>
+                                <li exact=""><a href="./docs/animation">Animation</a></li>
+                                <li exact=""><a href="./docs/article">Article</a></li>
+                                <li exact=""><a href="./docs/background">Background</a></li>
+                                <li exact=""><a href="./docs/badge">Badge</a></li>
+                                <li exact=""><a href="./docs/base">Base</a></li>
+                                <li exact=""><a href="./docs/breadcrumb">Breadcrumb</a></li>
+                                <li exact=""><a href="./docs/button">Button</a></li>
+                                <li exact=""><a href="./docs/card">Card</a></li>
+                                <li exact=""><a href="./docs/close">Close</a></li>
+                                <li exact=""><a href="./docs/column">Column</a></li>
+                                <li exact=""><a href="./docs/comment">Comment</a></li>
+                                <li exact=""><a href="./docs/container">Container</a></li>
+                                <li exact=""><a href="./docs/countdown">Countdown</a></li>
+                                <li exact=""><a href="./docs/cover">Cover</a></li>
+                                <li exact=""><a href="./docs/description-list">Description List</a></li>
+                                <li exact=""><a href="./docs/divider">Divider</a></li>
+                                <li exact=""><a href="./docs/dotnav">Dotnav</a></li>
+                                <li exact=""><a href="./docs/drop">Drop</a></li>
+                                <li exact=""><a href="./docs/dropdown">Dropdown</a></li>
+                                <li exact=""><a href="./docs/filter">Filter</a></li>
+                                <li exact=""><a href="./docs/flex">Flex</a></li>
+                                <li exact=""><a href="./docs/form">Form</a></li>
+                                <li exact=""><a href="./docs/grid">Grid</a></li>
+                                <li exact=""><a href="./docs/heading">Heading</a></li>
+                                <li exact=""><a href="./docs/height">Height</a></li>
+                                <li exact=""><a href="./docs/icon">Icon</a></li>
+                                <li exact=""><a href="./docs/iconnav">Iconnav</a></li>
+                                <li exact=""><a href="./docs/image">Image</a></li>
+                                <li exact=""><a href="./docs/inverse">Inverse</a></li>
+                                <li exact=""><a href="./docs/label">Label</a></li>
+                                <li exact=""><a href="./docs/leader">Leader</a></li>
+                                <li exact=""><a href="./docs/lightbox">Lightbox</a></li>
+                                <li exact=""><a href="./docs/link">Link</a></li>
+                                <li exact=""><a href="./docs/list">List</a></li>
+                                <li exact=""><a href="./docs/margin">Margin</a></li>
+                                <li exact=""><a href="./docs/marker">Marker</a></li>
+                                <li exact=""><a href="./docs/modal">Modal</a></li>
+                                <li exact=""><a href="./docs/nav">Nav</a></li>
+                                <li exact=""><a href="./docs/navbar">Navbar</a></li>
+                                <li exact=""><a href="./docs/notification">Notification</a></li>
+                                <li exact=""><a href="./docs/offcanvas">Off-canvas</a></li>
+                                <li exact=""><a href="./docs/overlay">Overlay</a></li>
+                                <li exact=""><a href="./docs/padding">Padding</a></li>
+                                <li exact=""><a href="./docs/pagination">Pagination</a></li>
+                                <li exact=""><a href="./docs/parallax">Parallax</a></li>
+                                <li exact=""><a href="./docs/placeholder">Placeholder</a></li>
+                                <li exact=""><a href="./docs/position">Position</a></li>
+                                <li exact=""><a href="./docs/print">Print</a></li>
+                                <li exact=""><a href="./docs/progress">Progress</a></li>
+                                <li exact=""><a href="./docs/scroll">Scroll</a></li>
+                                <li exact=""><a href="./docs/scrollspy">Scrollspy</a></li>
+                                <li exact=""><a href="./docs/search">Search</a></li>
+                                <li exact=""><a href="./docs/section">Section</a></li>
+                                <li exact=""><a href="./docs/slidenav">Slidenav</a></li>
+                                <li exact=""><a href="./docs/slider">Slider</a></li>
+                                <li exact=""><a href="./docs/slideshow">Slideshow</a></li>
+                                <li exact=""><a href="./docs/sortable">Sortable</a></li>
+                                <li exact=""><a href="./docs/spinner">Spinner</a></li>
+                                <li exact=""><a href="./docs/sticky">Sticky</a></li>
+                                <li exact=""><a href="./docs/subnav">Subnav</a></li>
+                                <li exact=""><a href="./docs/svg">SVG</a></li>
+                                <li exact=""><a href="./docs/switcher">Switcher</a></li>
+                                <li exact=""><a href="./docs/tab">Tab</a></li>
+                                <li exact=""><a href="./docs/table">Table</a></li>
+                                <li exact=""><a href="./docs/text">Text</a></li>
+                                <li exact=""><a href="./docs/thumbnav">Thumbnav</a></li>
+                                <li exact=""><a href="./docs/tile">Tile</a></li>
+                                <li exact=""><a href="./docs/toggle">Toggle</a></li>
+                                <li exact=""><a href="./docs/tooltip">Tooltip</a></li>
+                                <li exact=""><a href="./docs/totop">Totop</a></li>
+                                <li exact=""><a href="./docs/transition">Transition</a></li>
+                                <li exact=""><a href="./docs/upload">Upload</a></li>
+                                <li exact=""><a href="./docs/utility">Utility</a></li>
+                                <li exact=""><a href="./docs/video">Video</a></li>
+                                <li exact=""><a href="./docs/visibility">Visibility</a></li>
+                                <li exact=""><a href="./docs/width">Width</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+</div>

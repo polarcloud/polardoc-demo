@@ -1,0 +1,26 @@
+<%
+let cssArray = ["css/uikit.min.css", "css/common.css"];
+if (page.__index) {
+  cssArray.push("css/index.css")
+}
+
+if (["document"].includes(page.layout)) {
+  cssArray.push("css/" + page.layout + ".css");
+}
+
+let jsArray = ["js/uikit.min.js", "https://cdn.bootcss.com/jquery/3.3.1/jquery.js"];
+
+let keywords = page.keywords || config.keywords;
+let description = page.description || config.description;
+%>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="<%- config.author %>">
+<meta name="description" content="<%- description %>">
+<meta name="keywords" content="<%- keywords %>">
+<title><%- page.layout %></title>
+<link rel="icon" href="<%- config.favicon %>" type="image/ico"/>
+
+<%- css(cssArray) %>
+<%- js(jsArray) %>
+

@@ -1,0 +1,10 @@
+highlight:
+  enable: false
+  gutter: false
+  line_number: false
+  auto_detect: true
+  tab_replace:
+# 主题颜色
+polardoc:
+  scss:
+    base-color: "#1d82d7"

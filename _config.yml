@@ -1,0 +1,74 @@
+# Hexo Configuration
+## Docs: https://hexo.io/docs/configuration.html
+## Source: https://github.com/hexojs/hexo/
+
+# Site
+name: polardoc
+title: polardoc
+subtitle: 用于快速构建项目站点的 Hexo 主题
+description:
+author: LiuYuShuai
+language: 
+# config hexo-generator-i18n option (optional, this is default option)
+timezone:
+version: 0.0.1
+# URL
+## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
+url: http://polarlang.org
+root: /
+permalink: :year/:month/:day/:title/
+permalink_defaults:
+
+# Directory
+source_dir: source
+public_dir: public
+code_dir: downloads/code
+i18n_dir: :lang
+post_dir: posts
+skip_render:
+excerpt_depth: 3
+
+# Writing
+new_post_name: :year/:month/:day/:title.md # File name of new posts
+default_layout: post
+titlecase: false # Transform title into titlecase
+external_link: true # Open external links in new tab
+filename_case: 0
+render_drafts: false
+post_asset_folder: true
+relative_link: false
+future: true
+
+# 禁用默认高亮
+highlight:
+  enable: false
+  gutter: false
+  line_number: false
+  auto_detect: true
+  tab_replace:
+
+node_sass:
+  outputStyle: nested
+  precision: 5
+  sourceComments: false
+
+date_format: YYYY-MM-DD HH:mm:ss
+time_format: HH:mm:ss
+
+# blog config
+per_page: 5 # 每页数量
+pagination_dir: page # 翻页路由
+
+# 主题
+theme: polardoc
+
+description_length: 200
+# 主题颜色
+polardoc:
+  scss:
+    base-color: "#1b524b"
+
+deploy:
+  - type: git
+    repo: git@gitee.com:polarphp/polarphp_website_deploy.git
+    branch: master

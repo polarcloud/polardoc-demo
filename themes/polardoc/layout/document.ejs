@@ -1,0 +1,56 @@
+<div class="document-content">
+    <div uk-grid>
+        <div class="uk-width-auto@m">
+            <ul class="category-list-wrapper" id="category-list-wrapper">
+                <%- documentCategory(page) %>
+            </ul>
+            <div id="category-placeholder">
+
+            </div>
+        </div>
+        <div class="uk-width-expand@m text-content-wrapper">
+            <div class="text-content">
+                <%- page.content %>
+            </div>
+        </div>
+    </div>
+</div>
+
+<link rel="stylesheet" href="//cdn.bootcss.com/highlight.js/9.6.0/styles/github.min.css">
+<script src="//cdn.bootcss.com/highlight.js/9.6.0/highlight.min.js"></script>
+<script>
+  $(document).ready(function () {
+    let width = $('#category-list-wrapper')[0].clientWidth;
+    $("#category-placeholder").width(width);
+    $('#category-list-wrapper').css("position", "fixed")
+  });
+
+  var trim_indent = true;
+  var line_number = false;
+  // enable highlight
+  $('pre code').each(function (i, block) {
+    var texts = $(this).text().split('\n');
+    // trim indent
+    if (trim_indent) {
+      var tab = texts[0].match(/^\s{0,}/);
+      if (tab) {
+        var arr = [];
+        texts.forEach(function (temp) {
+          arr.push(temp.replace(tab, ''));
+        });
+        $(this).text(arr.join('\n'));
+      }
+    }
+    // add line number
+    if (line_number) {
+      var lines = texts.length - 1;
+      var $numbering = $('<ul/>').addClass('pre-numbering');
+      $(this).addClass('has-numbering').parent().append($numbering);
+      for (i = 1; i <= lines; i++) {
+        $numbering.append($('<li/>').text(i));
+      }
+    }
+    // hightlight
+    hljs.highlightBlock(block);
+  });
+</script>

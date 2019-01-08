@@ -1,0 +1,29 @@
+$white:			#fff;
+$black:			#000;
+$red:       #f5222d;
+$volcano:   #fa541c;
+$orange:    #fa8c16;
+$gold:      #faad14;
+$yellow:    #fadb14;
+$lime:      #a0d911;
+$green:     #52c41a;
+$cyan:      #13c2c2;
+$blue:      #1890ff;
+$geekBlue:  #2f54eb;
+$purple:    #722ed1;
+$pink:      #eb2f96;
+
+@function getLight($color, $index) {
+  $rate: $index * (100 / 6);
+  @return mix(#fff, $color, $rate);
+}
+
+@function getDark($color, $index) {
+  $rate: $index * (100 / 5);
+  @return mix(#000, $color, $rate);
+}
+
+@function color($color, $index) {
+  $resColor: if($index < 6, getLight($color, 6 - $index), getDark($color, $index - 6));
+  @return $resColor;
+}

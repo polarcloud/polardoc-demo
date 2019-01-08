@@ -1,0 +1,25 @@
+.slogan {
+  background: $base-color;
+  padding-bottom: 20px;
+  * {
+    color: white;
+    text-align: center;
+  }
+  h2 {
+    font-size: 50px;
+    line-height: 70px;
+  }
+  p {
+    font-size: 30px;
+    line-height: 40px;
+  }
+  .uk-button {
+    margin-right: 20px;
+    min-width: 8rem;
+    &:hover {
+      color: $base-color;
+      background: white;
+      border-color: white;
+    }
+  }
+}
