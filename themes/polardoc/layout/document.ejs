@@ -1,56 +1,43 @@
 <div class="document-content">
     <div uk-grid>
-        <div class="uk-width-auto@m">
+        <div class="uk-width-auto@m uk-visible@m">
             <ul class="category-list-wrapper" id="category-list-wrapper">
-                <%- documentCategory(page) %>
+                <% let info = documentCategory(page) %>
+                <%- info.category %>
             </ul>
             <div id="category-placeholder">
-
             </div>
         </div>
-        <div class="uk-width-expand@m text-content-wrapper">
+        <div class="uk-width-expand@m text-content-wrapper uk-width-1-1">
             <div class="text-content">
                 <%- page.content %>
+                <div>
+                    <% if (config.polardoc.edit_url) {%>
+                        <a target="_blank" href="<%= config.polardoc.edit_url %>/source/<%= page.source %>" class="edit">编辑本页</a>
+                    <% } %>
+                    <ul class="uk-pagination">
+                        <% if (info.prev) { %>
+                            <li><a href="<%= info.prev.url %>"><span class="uk-margin-small-right" uk-pagination-previous></span> <%= info.prev.name %></a></li>
+                        <%}%>
+                        <% if (info.next) { %>
+                            <li class="uk-margin-auto-left"><a href="<%= info.next.url %>"><%= info.next.name %> <span class="uk-margin-small-left" uk-pagination-next></span></a></li>
+                        <%}%>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
-<link rel="stylesheet" href="//cdn.bootcss.com/highlight.js/9.6.0/styles/github.min.css">
-<script src="//cdn.bootcss.com/highlight.js/9.6.0/highlight.min.js"></script>
 <script>
   $(document).ready(function () {
+    // 侧边栏样式
     let width = $('#category-list-wrapper')[0].clientWidth;
     $("#category-placeholder").width(width);
     $('#category-list-wrapper').css("position", "fixed")
-  });
-
-  var trim_indent = true;
-  var line_number = false;
-  // enable highlight
-  $('pre code').each(function (i, block) {
-    var texts = $(this).text().split('\n');
-    // trim indent
-    if (trim_indent) {
-      var tab = texts[0].match(/^\s{0,}/);
-      if (tab) {
-        var arr = [];
-        texts.forEach(function (temp) {
-          arr.push(temp.replace(tab, ''));
-        });
-        $(this).text(arr.join('\n'));
-      }
-    }
-    // add line number
-    if (line_number) {
-      var lines = texts.length - 1;
-      var $numbering = $('<ul/>').addClass('pre-numbering');
-      $(this).addClass('has-numbering').parent().append($numbering);
-      for (i = 1; i <= lines; i++) {
-        $numbering.append($('<li/>').text(i));
-      }
-    }
-    // hightlight
-    hljs.highlightBlock(block);
+    // 翻页
+    $('#category-list-wrapper .active').parentsUntil(':has(a)').css('background', 'red');
   });
 </script>
+
+<%- partial("_partial/highlight") %>

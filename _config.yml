@@ -67,6 +67,7 @@ description_length: 200
 polardoc:
   scss:
     base-color: "#1b524b"
+  edit_url: https://github.com/polarcloud/polardoc-demo/blob/master
 
 deploy:
   - type: git

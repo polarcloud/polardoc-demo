@@ -1,1 +1,40 @@
-<%- page.content %>
+<%- css("css/post.css") %>
+<div class="blog-wrapper">
+    <div class="uk-container content">
+        <h2><%= page.title %></h2>
+        <div class="uk-grid-small uk-grid" uk-grid="">
+            <% if (page.tags && page.tags.length) {%>
+            <div class="uk-first-column">
+                <% page.tags.forEach(function (tag) {
+                %>
+                <span class="uk-label"><%= tag.name %></span>
+                <%
+                })%>
+
+            </div>
+            <%}%>
+            <% if (page.author) {%>
+            <div>
+                <a target="_blank" href="https://github.com/<%= page.author %>"><%= page.author %></a>
+            </div>
+            <%}%>
+            <div>
+                <span class="button-span">发布于 <%= page.date.format(config.date_format) %></span>
+            </div>
+        </div>
+        <article>
+            <%- page.content %>
+        </article>
+        <ul class="uk-pagination">
+            <%console.log(page.prev)%>
+            <% if (page.prev) { %>
+            <li><a href="<%= url_for(page.prev.path) %>"><span class="uk-margin-small-right" uk-pagination-previous></span> 上一篇</a></li>
+            <%}%>
+            <% if (page.next) { %>
+            <li class="uk-margin-auto-left"><a href="<%= url_for(page.next.path) %>">下一篇 <span class="uk-margin-small-left" uk-pagination-next></span></a></li>
+            <%}%>
+        </ul>
+    </div>
+</div>
+
+<%- partial("_partial/highlight") %>

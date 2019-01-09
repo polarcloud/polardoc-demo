@@ -40,9 +40,11 @@ body {
 .text-content {
   padding: 20px;
   color: rgba(7, 24, 31, 0.87);
-  width: 800px;
-  max-width: 100%;
+  max-width: 800px;
   margin: auto;
   margin-top: 0;
   padding-bottom: 100px;
+  .edit {
+    border-bottom: 1px solid $base-color;
+  }
 }

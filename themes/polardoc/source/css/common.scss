@@ -2,7 +2,12 @@
   color: inherit;
   text-decoration: none;
 }
-
+.uk-label {
+  background: $base-color;
+}
+.uk-link, a {
+  color: $base-color;
+}
 // file content
 a.header-anchor{
   color: $base-color;
@@ -49,6 +54,23 @@ pre {
     min-height: 60px;
   }
 }
+#offcanvas-push {
+  .uk-offcanvas-bar {
+    background: white;
+    li,a {
+      color: black !important;
+    }
+    li.uk-active a{
+    }
+  }
+  .category-nav  {
+    margin-top: 80px;
+  }
+  .uk-offcanvas-close {
+    color: black;
+  }
+}
+
 // scrollbar
 ::-webkit-scrollbar {
   width: 6px;
@@ -73,15 +95,12 @@ pre {
 
 footer {
   padding: 10px 0;
-  color: white;
   font-size: 12px;
-  background: $base-color;
   text-align: center;
   p {
     a {
-      color: white;
+      color: #666;
       &:hover {
-
       }
     }
     margin: 0;
