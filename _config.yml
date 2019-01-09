@@ -71,5 +71,5 @@ polardoc:
 
 deploy:
   - type: git
-    repo: git@gitee.com:polarphp/polarphp_website_deploy.git
+    repo: git@git.dev.tencent.com:yushuailiu/polardoc-demo.git
     branch: master
